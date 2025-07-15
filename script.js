@@ -1,27 +1,27 @@
-const formulario = document.getElementById('formulario');
-const lista = document.getElementById('mensajes');
+const formulari = document.getElementById('formulari');
+const llista = document.getElementById('missatges');
 
-// Cargar datos del localStorage
-const mensajesGuardados = JSON.parse(localStorage.getItem('mensajes')) || [];
-mensajesGuardados.forEach(m => mostrarMensaje(m));
+// Carregar dades del localStorage
+const missatgesGuardats = JSON.parse(localStorage.getItem('missatges')) || [];
+missatgesGuardats.forEach(m => mostrarMissatge(m));
 
 // Manejar el envío
-formulario.addEventListener('submit', function (e) {
+formulari.addEventListener('submit', function (e) {
   e.preventDefault();
-  const mensaje = {
-    nombre: this.nombre.value,
+  const missatge = {
+    nom: this.nom.value,
     email: this.email.value,
-    mensaje: this.mensaje.value
+    missatge: this.missatge.value
   };
-  mensajesGuardados.push(mensaje);
-  localStorage.setItem('mensajes', JSON.stringify(mensajesGuardados));
-  mostrarMensaje(mensaje);
+  missatgesGuardats.push(missatge);
+  localStorage.setItem('missatges', JSON.stringify(missatgesGuardats));
+  mostrarMissatge(missatge);
   this.reset();
 });
 
-// Mostrar un mensaje en la lista
-function mostrarMensaje(m) {
+// Mostrar un missatge a la llista
+function mostrarMissatge(m) {
   const li = document.createElement('li');
-  li.textContent = `${m.nombre} (${m.email}): ${m.mensaje}`;
-  lista.appendChild(li);
+  li.textContent = `${m.nom} (${m.email}): ${m.missatge}`;
+  llista.appendChild(li);
 }
